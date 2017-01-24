@@ -3,9 +3,6 @@ import { ContactsService } from './../contacts.service';
 import { Component, OnInit } from '@angular/core';
 import { Observable } from 'rxjs/Observable';
 import { Subject } from 'rxjs/Subject';
-import "rxjs/add/operator/debounceTime";
-import "rxjs/add/operator/distinctUntilChanged";
-import "rxjs/add/operator/switchMap";
 import "rxjs/add/operator/merge";
 
 @Component({
@@ -22,9 +19,7 @@ export class ContactsListComponent implements OnInit {
   constructor(private contactsService: ContactsService) {}
 
   ngOnInit() {
-    this.contacts = this.terms$.debounceTime(400)
-        .distinctUntilChanged()
-        .switchMap(term => this.contactsService.search(term))
+    this.contacts = this.contactsService.search(this.terms$)
         .merge(this.contactsService.getContacts());
   }
 
