@@ -6,25 +6,28 @@
       <md-card-subtitle>{{contact.email}}</md-card-subtitle>
     </md-card-title-group>
     <md-card-content>
-    <trm-tabs>
-      <trm-tab title="General" fxLayout="column">
-        <md-input-container fxFlex>
-          <input md-input placeholder="Name" name="name" [(ngModel)]="contact.name">
-        </md-input-container>
-        <md-input-container fxFlex>
-          <input md-input placeholder="Email" name="email" [(ngModel)]="contact.email">
-        </md-input-container>
-        <md-input-container fxFlex>
-          <input md-input placeholder="Phone" name="phone" [(ngModel)]="contact.phone">
-        </md-input-container>
-        <md-input-container fxFlex>
-          <input md-input placeholder="Website" name="website" [(ngModel)]="contact.website">
-        </md-input-container>
-        <md-input-container fxFlex>
-          <input md-input placeholder="Birthday" name="birthday" type="date" [(ngModel)]="contact.birthday">
-        </md-input-container>
-      </trm-tab>
-      <trm-tab title="Address" fxLayout="column">
+    <md-tab-group>
+      <md-tab label="General">
+        <fieldset fxLayout="column">
+          <legend>General</legend>
+          <md-input-container fxFlex>
+            <input md-input placeholder="Name" name="name" [(ngModel)]="contact.name">
+          </md-input-container>
+          <md-input-container fxFlex>
+            <input md-input placeholder="Email" name="email" [(ngModel)]="contact.email">
+          </md-input-container>
+          <md-input-container fxFlex>
+            <input md-input placeholder="Phone" name="phone" [(ngModel)]="contact.phone">
+          </md-input-container>
+          <md-input-container fxFlex>
+            <input md-input placeholder="Website" name="website" [(ngModel)]="contact.website">
+          </md-input-container>
+          <md-input-container fxFlex>
+            <input md-input placeholder="Birthday" name="birthday" type="date" [(ngModel)]="contact.birthday">
+          </md-input-container>
+        </fieldset>
+      </md-tab>
+      <md-tab label="Address">
         <fieldset fxLayout="column">
           <legend>Address</legend>
           <md-input-container fxFlex>
@@ -37,8 +40,8 @@
             <input md-input placeholder="City" name="city" [(ngModel)]="contact.address.city">
           </md-input-container>
         </fieldset>
-      </trm-tab>
-    </trm-tabs>
+      </md-tab>
+    </md-tab-group>
     </md-card-content>
     <md-card-actions fxLayout fxLayoutAlign="center center">
       <button md-button (click)="save(contact)" title="Save contact">Save</button>
