@@ -1,3 +1,4 @@
+import { EventBusService } from '../event-bus.service';
 import { Contact } from './../models/contact';
 import { ContactsService } from './../contacts.service';
 import { Component, OnInit } from '@angular/core';
@@ -16,9 +17,13 @@ export class ContactsListComponent implements OnInit {
 
   private terms$ = new Subject<string>();
 
-  constructor(private contactsService: ContactsService) {}
+  constructor(
+    private contactsService: ContactsService,
+    private eventBus: EventBusService
+  ) {}
 
   ngOnInit() {
+    this.eventBus.emit("appTitleChange", "Contacts");
     this.contacts = this.contactsService.search(this.terms$)
         .merge(this.contactsService.getContacts());
   }

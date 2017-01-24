@@ -1,3 +1,4 @@
+import { EventBusService } from './event-bus.service';
 import { BrowserModule } from '@angular/platform-browser';
 import { NgModule } from '@angular/core';
 import { RouterModule } from '@angular/router';
@@ -29,6 +30,7 @@ import { TabComponent } from './tabs/tab/tab.component';
   bootstrap: [ContactsAppComponent],
   providers: [
     ContactsService,
+    EventBusService,
     { provide: "API_ENDPOINT", useValue: "http://localhost:4201/api"}
   ]
 })

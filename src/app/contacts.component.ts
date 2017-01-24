@@ -1,3 +1,4 @@
+import { EventBusService } from './event-bus.service';
 import { Component } from '@angular/core';
 
 @Component({
@@ -7,4 +8,12 @@ import { Component } from '@angular/core';
 })
 export class ContactsAppComponent {
 
+  title: String;
+
+  constructor(private eventBus: EventBusService) {}
+
+  ngOnInit() {
+    this.eventBus.observe('appTitleChange')
+                 .subscribe(title => this.title = title);
+  }
 }
