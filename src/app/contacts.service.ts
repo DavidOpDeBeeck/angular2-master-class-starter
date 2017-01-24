@@ -12,6 +12,12 @@ export class ContactsService {
     @Inject("API_ENDPOINT") private apiEndpoint
   ) { }
 
+  search(term: String) {
+    return this.http.get(`${this.apiEndpoint}/search?text=${term}`)
+      .map(res => res.json())
+      .map(data => data.items);
+  }
+
   getContact(id: String) {
     return this.http.get(`${this.apiEndpoint}/contacts/${id}`)
       .map(res => res.json())

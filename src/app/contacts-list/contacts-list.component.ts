@@ -18,6 +18,10 @@ export class ContactsListComponent implements OnInit {
     this.contacts = this.contactsService.getContacts();
   }
 
+  search(term: String) {
+    this.contacts = this.contactsService.search(term);
+  }
+
   trackByContacts(index: number, contact: Contact) {
     return contact.id;
   }
